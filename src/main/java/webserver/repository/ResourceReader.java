@@ -1,14 +1,15 @@
-package webserver;
+package webserver.repository;
 
 import java.io.*;
 
-public class ResourceReader {
+public class ResourceReader implements DataReader {
     private final String staticResourcePath;
 
     public ResourceReader(String staticResourcePath) {
         this.staticResourcePath = staticResourcePath;
     }
 
+    @Override
     public String readContent(String uri) {
         StringBuilder builder = new StringBuilder();
         try {

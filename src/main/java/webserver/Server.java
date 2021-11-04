@@ -1,5 +1,8 @@
 package webserver;
 
+import webserver.controller.Handler;
+import webserver.controller.RequestHandler;
+
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -30,7 +33,7 @@ public class Server {
                 try (Socket socket = serverSocket.accept();
                      InputStream inputStream = socket.getInputStream();
                      OutputStream outputStream = socket.getOutputStream()) {
-                    AbstractRequestHandler handler = new RequestHandler(inputStream, outputStream, staticResourcePath);
+                    Handler handler = new RequestHandler(inputStream, outputStream, staticResourcePath);
                     handler.handle();
                 }
             }

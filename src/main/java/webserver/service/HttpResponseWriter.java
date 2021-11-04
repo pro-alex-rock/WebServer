@@ -1,11 +1,12 @@
-package webserver;
+package webserver.service;
 
 import java.io.IOException;
 import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
-public class ResponseWriter {
+public class HttpResponseWriter implements ResponseWriter {
 
+    @Override
     public void writeSuccessResponse(OutputStream outputStream, String content) {
         try {
             outputStream.write("HTTP/1.1 200 OK\n".getBytes(StandardCharsets.UTF_8));
@@ -17,6 +18,7 @@ public class ResponseWriter {
 
     }
 
+    @Override
     public void writeNotFoundResponse(OutputStream outputStream) {
         try {
             outputStream.write("HTTP/1.1 404 Not Found\n".getBytes(StandardCharsets.UTF_8));

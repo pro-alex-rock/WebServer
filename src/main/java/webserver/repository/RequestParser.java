@@ -1,4 +1,4 @@
-package webserver;
+package webserver.repository;
 
 import webserver.model.HttpMethod;
 import webserver.model.Request;
@@ -11,8 +11,9 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-public class RequestParser {
+public class RequestParser implements Parser {
 
+    @Override
     public Request parse(InputStream inputStream) {
         Request request = new Request();
         try {
