@@ -22,7 +22,7 @@ public class RequestHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
     private final RequestParser parser;
-    private String staticResourcePath = "src/main/resources/webapp";
+    private String staticResourcePath;
 
     public RequestHandler(InputStream inputStream, OutputStream outputStream, String staticResourcePath) {
         this.inputStream = inputStream;
@@ -40,7 +40,7 @@ public class RequestHandler {
             responseWriter.writeSuccessResponse(outputStream, content);
         } catch (Exception e) {
             responseWriter.writeNotFoundResponse(outputStream);
+            throw new RuntimeException("Unable to send content", e);
         }
-
     }
 }

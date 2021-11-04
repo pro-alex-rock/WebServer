@@ -11,9 +11,10 @@ public class ResourceReader {
 
     public String readContent(String uri) {
         StringBuilder builder = new StringBuilder();
-        try(BufferedReader reader = new BufferedReader(new FileReader(new File(staticResourcePath, uri)))) {
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(new File(staticResourcePath, uri)));
             String line = null;
-            while (!(line = reader.readLine()).isEmpty()) {
+            while ((line = reader.readLine()) != null) { //while (!(line = reader.readLine()).isEmpty()) generates an Exception
                 builder.append(line);
             }
         } catch (IOException e) {

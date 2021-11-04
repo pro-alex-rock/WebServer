@@ -6,7 +6,7 @@ import java.net.Socket;
 
 public class Server {
     private int port;
-    private String staticResourcePath = "src/main/resources/webapp";
+    private String staticResourcePath;
 
     public int getPort() {
         return port;
@@ -26,17 +26,26 @@ public class Server {
 
     public void start() {
         try(ServerSocket serverSocket = new ServerSocket(port)) {
-            try(Socket socket = serverSocket.accept(); // TODO every socket open in new thread
-                InputStream inputStream = new BufferedInputStream(socket.getInputStream());
-                OutputStream outputStream = new BufferedOutputStream(socket.getOutputStream())) {
-                print(socket); //tempo method
-                RequestHandler handler = new RequestHandler(inputStream, outputStream, staticResourcePath);
-                handler.handle();
+            while (true) {
+                try (Socket socket = serverSocket.accept(); // TODO every socket open in new thread
+                     InputStream inputStream = socket.getInputStream();
+                     OutputStream outputStream = socket.getOutputStream()) {
+                    //print(socket); //tempo method
+                    RequestHandler handler = new RequestHandler(inputStream, outputStream, staticResourcePath);
+                    handler.handle();
+                }
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public static void main(String[] args) {
+        Server server = new Server();
+        server.setPort(3030);
+        server.setStaticResourcePath("src/main/resources/webapp");
+        server.start();
     }
 
     private void print(Socket socket) {
