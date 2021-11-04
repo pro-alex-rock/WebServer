@@ -11,21 +11,6 @@ import java.nio.charset.StandardCharsets;
 import java.util.HashMap;
 import java.util.Map;
 
-/*public class RequestParser {
-
-    public Request parse(BufferedReader reader) {
-
-    }
-
-    private void injectUriAndMethod(String requestLine, Request request) {
-
-    }
-
-    private void injectHeaders(BufferedReader reader, Request request) {
-
-    }
-}*/
-
 public class RequestParser {
 
     public Request parse(InputStream inputStream) {
@@ -50,7 +35,6 @@ public class RequestParser {
     private void injectHeaders(BufferedReader reader, Request request) {
         Map<String, String> headers = new HashMap<>();
         try {
-            //BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
             String line = null;
             while (!(line = reader.readLine()).isEmpty()) {
                 String[] headerLine = line.split(":\\s");

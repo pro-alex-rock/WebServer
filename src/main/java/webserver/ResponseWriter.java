@@ -6,14 +6,6 @@ import java.nio.charset.StandardCharsets;
 
 public class ResponseWriter {
 
-    /*public void writeSuccessResponse(BufferedWriter writer, String content) {
-
-    }
-
-    public void writeNotFoundResponse(BufferedWriter writer) {
-
-    }*/
-
     public void writeSuccessResponse(OutputStream outputStream, String content) {
         try {
             outputStream.write("HTTP/1.1 200 OK\n".getBytes(StandardCharsets.UTF_8));

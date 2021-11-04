@@ -5,24 +5,12 @@ import webserver.model.Request;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/*public class RequestHandler {
-    private BufferedReader reader;
-    private BufferedWriter writer;
 
-    public RequestHandler(BufferedReader reader, BufferedWriter writer) {
-        this.reader = reader;
-        this.writer = writer;
-    }
-
-    public void handle() {
-    }
-}*/
-
-public class RequestHandler {
+public class RequestHandler implements AbstractRequestHandler {
     private final InputStream inputStream;
     private final OutputStream outputStream;
     private final RequestParser parser;
-    private String staticResourcePath;
+    private final String staticResourcePath;
 
     public RequestHandler(InputStream inputStream, OutputStream outputStream, String staticResourcePath) {
         this.inputStream = inputStream;
@@ -31,6 +19,7 @@ public class RequestHandler {
         parser = new RequestParser();
     }
 
+    @Override
     public void handle() {
         Request request = parser.parse(inputStream);
         ResourceReader resourceReader = new ResourceReader(staticResourcePath);
