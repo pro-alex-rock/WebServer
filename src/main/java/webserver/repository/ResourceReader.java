@@ -1,6 +1,7 @@
 package webserver.repository;
 
 import java.io.*;
+//TODO write image reader
 
 public class ResourceReader implements DataReader {
     private final String staticResourcePath;
