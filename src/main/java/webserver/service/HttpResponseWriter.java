@@ -8,9 +8,6 @@ public class HttpResponseWriter implements ResponseWriter {
 
     @Override
     public void writeSuccessResponse(OutputStream outputStream, String content) {
-        if (outputStream == null) {
-            throw new NullPointerException("The outputStream cannot be null in 200method.");
-        }
         if (content == null) {
             throw  new NullPointerException("The content cannot be null.");
         }
@@ -25,14 +22,10 @@ public class HttpResponseWriter implements ResponseWriter {
     }
 
     @Override
-    public void writeNotFoundResponse(OutputStream outputStream) {
+    public void writeNotFoundResponse(OutputStream outputStream) throws IOException {
         if (outputStream == null) {
-            throw new NullPointerException("The outputStream cannot be null in 404method.");
+            throw new NullPointerException("The outputStream cannot be null.");
         }
-        try {
             outputStream.write("HTTP/1.1 404 Not Found\n".getBytes(StandardCharsets.UTF_8));
-        } catch (IOException e) {
-            throw new RuntimeException("Unable to send 404 message", e);
-        }
     }
 }

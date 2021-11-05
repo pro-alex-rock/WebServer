@@ -2,6 +2,7 @@ package webserver.service;
 
 import webserver.model.Request;
 
+import java.io.IOException;
 import java.io.InputStream;
 
 /**
@@ -9,5 +10,5 @@ import java.io.InputStream;
  * 2021
  */
 public interface Parser {
-    Request parse(InputStream inputStream);
+    Request parse(InputStream inputStream) throws IOException;
 }

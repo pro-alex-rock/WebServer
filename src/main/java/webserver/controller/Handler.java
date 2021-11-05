@@ -1,5 +1,7 @@
 package webserver.controller;
 
+import java.io.IOException;
+
 public interface Handler {
-    void handle();
+    void handle() throws IOException;
 }

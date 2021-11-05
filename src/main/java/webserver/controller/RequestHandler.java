@@ -1,13 +1,14 @@
 package webserver.controller;
 
 import webserver.model.Request;
-import webserver.repository.DataReader;
+import webserver.io.DataReader;
 import webserver.service.Parser;
 import webserver.service.RequestParser;
-import webserver.repository.ResourceReader;
+import webserver.io.ResourceReader;
 import webserver.service.HttpResponseWriter;
 import webserver.service.ResponseWriter;
 
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
@@ -26,7 +27,7 @@ public class RequestHandler implements Handler {
     }
 
     @Override
-    public void handle() {
+    public void handle() throws IOException {
         Request request = parser.parse(inputStream);
         DataReader resourceReader = new ResourceReader(staticResourcePath);
         ResponseWriter responseWriter = new HttpResponseWriter();

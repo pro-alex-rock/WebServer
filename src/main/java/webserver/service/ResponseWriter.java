@@ -1,5 +1,6 @@
 package webserver.service;
 
+import java.io.IOException;
 import java.io.OutputStream;
 
 /**
@@ -9,5 +10,5 @@ import java.io.OutputStream;
 public interface ResponseWriter {
     void writeSuccessResponse(OutputStream outputStream, String content);
 
-    void writeNotFoundResponse(OutputStream outputStream);
+    void writeNotFoundResponse(OutputStream outputStream) throws IOException;
 }

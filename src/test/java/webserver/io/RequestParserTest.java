@@ -1,13 +1,13 @@
-package webserver.repository;
+package webserver.io;
 
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
 import webserver.service.RequestParser;
 
 import java.io.InputStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 /**
  * @author Oleksandr Haleta
@@ -15,13 +15,8 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class RequestParserTest {
 
-    InputStream inputStream;
+    InputStream inputStream = Mockito.mock(InputStream.class);
     RequestParser requestParser = new RequestParser();
-
-    @BeforeEach
-    void setUp() {
-        inputStream = Mockito.mock(InputStream.class);
-    }
 
     @Test
     void shouldThrowIOExceptionCauseInputStreamNullParse() {

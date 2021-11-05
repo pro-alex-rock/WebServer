@@ -14,19 +14,15 @@ import java.util.Map;
 public class RequestParser implements Parser {
 
     @Override
-    public Request parse(InputStream inputStream) {
+    public Request parse(InputStream inputStream) throws IOException {
         if (inputStream == null) {
             throw new NullPointerException("The inputStream cannot be null in parse method.");
         }
         Request request = new Request();
-        try {
             BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
             String uri = reader.readLine();
             injectUriAndMethod(uri, request);
             injectHeaders(reader, request);
-        }catch (IOException e) {
-            e.printStackTrace();
-        }
         return request;
     }
 
