@@ -1,4 +1,4 @@
-package webserver.repository;
+package webserver.service;
 
 import webserver.model.HttpMethod;
 import webserver.model.Request;

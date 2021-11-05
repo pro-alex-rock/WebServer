@@ -2,8 +2,8 @@ package webserver.controller;
 
 import webserver.model.Request;
 import webserver.repository.DataReader;
-import webserver.repository.Parser;
-import webserver.repository.RequestParser;
+import webserver.service.Parser;
+import webserver.service.RequestParser;
 import webserver.repository.ResourceReader;
 import webserver.service.HttpResponseWriter;
 import webserver.service.ResponseWriter;

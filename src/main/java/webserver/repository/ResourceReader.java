@@ -11,6 +11,9 @@ public class ResourceReader implements DataReader {
 
     @Override
     public String readContent(String uri) {
+        if (uri == null) {
+            throw new NullPointerException("The uri cannot be null in readContent method.");
+        }
         StringBuilder builder = new StringBuilder();
         try {
             BufferedReader reader = new BufferedReader(new FileReader(new File(staticResourcePath, uri)));
